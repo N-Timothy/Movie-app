@@ -1,0 +1,310 @@
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 50%; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    background-color: #73777B;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    border-radius: 20px;
+  }
+  
+  .close {
+    color: black;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #review {
+      display: block;
+      color: #F1EEE9;
+  }
+
+  #overview {
+    display: none;
+    width: 100%;
+    height: 100px;
+  }
+
+  .buttonGrid {
+      display: grid;
+      grid-template-columns: auto auto;
+  }
+
+  #changeOverview{
+      margin-right: 40%;
+  }
+
+  #save {
+      display: none;
+      margin-right: 40%;
+  }
+
+  #delete {
+      float: right;
+      margin-left: 60%;
+  }
+
+
+  .addModal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 50%; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .addModal-content {
+    background-color: #73777B;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    border-radius: 20px;
+  }
+  
+  .addClose {
+    color: black;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    margin: auto
+  }
+  
+  .addClose:hover,
+  .addClose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .item{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  #addTitle {
+    font-size: 20px;
+    margin: auto;
+    width: 100%;
+  }
+
+  #addOverview {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  #addPoster {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  #addSubmit {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bolder;
+    border-radius: 10px;
+  }
+
+  #ADDMOVIE {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  #addMovieDropDown{
+    font-weight: bolder;
+    font-size: 18px;
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 760px){
+
+    .modal {
+      display: none;
+      position: fixed; 
+      z-index: 1; 
+      padding-top: 30%; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.4); 
+    }
+    
+    .modal-content {
+      background-color: #73777B;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 20px;
+    }
+    
+    .close {
+      color: black;
+      float: right;
+      font-size: 50px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    #review {
+        display: block;
+        color: #F1EEE9;
+        font-size: 33px;
+    }
+  
+    #overview {
+      display: none;
+      width: 100%;
+      height: 300px;
+      font-size: 30px;
+    }
+  
+    #modalTitle {
+      font-size: 40px;
+    }
+
+    .buttonGrid {
+        display: grid;
+        grid-template-columns: auto auto;
+        margin-top: 20px;
+    }
+  
+    .changeOverview{
+        margin-right: 40%;
+        font-weight: bolder;
+        font-size: 30px;
+    }
+  
+    .save {
+        display: none;
+        margin-right: 40%;
+        font-weight: bolder;
+        font-size: 30px;
+    }
+  
+    #delete {
+        float: right;
+        margin-left: 60%;
+        font-size: 40px;
+        border-radius: 20px;
+    }
+  
+  
+    .addModal {
+      display: none;
+      position: fixed; 
+      z-index: 1; 
+      padding-top: 50%; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.4); 
+    }
+    
+    .addModal-content {
+      background-color: #73777B;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 20px;
+    }
+    
+    .addClose {
+      color: black;
+      float: right;
+      font-size: 50px;
+      font-weight: bold;
+      margin: auto
+    }
+    
+    .addClose:hover,
+    .addClose:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    .item{
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  
+    #addTitle {
+      font-size: 35px;
+      margin: auto;
+      width: 100%;
+    }
+  
+    #addOverview {
+      width: 100%;
+      font-size: 30px;
+      height: 100px;
+    }
+  
+    #addPoster {
+      width: 100%;
+      font-size: 30px;
+    }
+  
+    #addSubmit {
+      font-size: 35px;
+      margin-top: 20px;
+      font-weight: bolder;
+      border-radius: 15spx;
+    }
+  
+    #ADDMOVIE {
+      font-size: 45px;
+      text-align: center;
+    }
+  
+    #addMovieDropDown{
+      font-weight: bolder;
+      font-size: 35px;
+      width: 100%;
+    }
+  }

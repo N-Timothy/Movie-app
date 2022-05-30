@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./assets/tictactoe.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies App</title>
+
+  </head>
+  <body class="bg-dark text-white">
+      <div class="p-4">
+          <h1>Movies </h1>
+          <div class="inpt">
+            <input type="text" id="searchTitle" placeholder="Search for title ..." maxlength="10">
+          </div>
+          
+          <div class="movType"> 
+            <label for="movieMod" id="movieMode">Choose movie type :</label> 
+         
+            <select name="movie_Mod" id="movieDropDown">
+              <option value="now_Showing"> Now Showing </option>
+              <option value="top_Rated"> Top Rated </option>
+              <option value="popular"> Popular </option>
+              <option value="upcoming"> Upcoming</option>
+            </select>
+          </div>
+          
+          <div class="page" id="pagination">
+            </div>
+          <div class="addMovieGrid">
+            <div id="moviesMode"> Now Showing </div>
+            <button id="add"> + </button>
+          </div>
+          <div id="movies"> </div>
+
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h3 id="modalTitle"></h3>
+              <p id="review"></p>
+              <textarea id="overview"> </textarea>
+              <div class="buttonGrid">
+                <button id="changeOverview" class="changeOverview">Change</button>
+                <button id="save" class="save">Save</button>
+                <button id="delete" class="fa fa-trash-o"> </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="addmyModal" class="modal">
+            <div class="addModal-content">
+              <span class="addClose">&times;</span>
+              <h3 id="ADDMOVIE"> ADD MOVIE </h3>
+              <form class="addForm" id="addForm" onsubmit="return Start()">
+                <div class="item"> Title : </div>
+                <input type="text" required id="addTitle" placeholder="Add title ... ">
+                <div class="item"> Overview :  </div>
+                <textarea type="text" required id="addOverview"> </textarea>
+                <div class="item"> Poster Link : </div>
+                <input type="text" id="addPoster" required>
+                <div class="item"> Movie type :  </div>
+                <select name="movie_Mod" id="addMovieDropDown">
+                  <option value="now_Showing"> Now Showing </option>
+                  <option value="top_Rated"> Top Rated </option>
+                  <option value="popular"> Popular </option>
+                  <option value="upcoming"> Upcoming</option>
+                </select>
+                <div class="item">
+                  <button type="submit" id="addSubmit"> ADD </button>
+                </div>
+              </form>
+              <script>
+                function Start() { return false; }  
+              </script>
+            </div>
+          </div>
+          
+      </div>
+    <script src="./script/main.js" type="module"></script>
+</body>
+</html>
