@@ -1,12 +1,17 @@
+import {config} from '../config.js'
+
+let LOCAL = config.localServer;
+
 export default async function updateData(key, newData, mode) {
-    const res = await fetch(`https://nathanael-website-json-server.herokuapp.com/${mode}/${key}`, {
+    const res = await fetch(`${LOCAL}/${mode}/${key}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: key,
-            data: newData
+            "title" : newData.title,
+            "overview" : newData.overview,
+            "posterPath" : newData.posterPath
         })
     });
     const data = await res.json();

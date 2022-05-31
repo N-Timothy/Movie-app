@@ -1,31 +1,31 @@
 import '../css/style.css';
 import { config } from './config.js';
-import { getMoviesModeLocal } from './movies';
+import { getMoviesModeBackend } from './movies';
 import pageSetting, { unsetColor } from './pagination.js';
 import {current_page } from './pagination.js';
 import add_movie from './add';
 import { add_movie_modal } from './add';
 
-// import { get_request } from './CRUD/get_request.js';
-// import { post_data } from './CRUD/post_data.js';
-// import { delete_data } from './CRUD/delete_data';
 import { generate_data } from './CRUD/generate_data';
 
 import review from './review';
 
 const movie = document.getElementById("movies");
 
-let movieMod = getMoviesModeLocal(1).now_Showing;
+let movieMod = getMoviesModeBackend(1).now_showing;
 let movieID = [];
 let delMovieId = [];
-let MOD = 'now_Showing';
+let MOD = 'now_showing';
 
 async function getMovies() {
   let data = [];
   try {
-    let res = await fetch(movieMod);
+    let res = await fetch(movieMod, {
+      method: "GET"
+    });
     data = await res.json();
   } catch (e) {}
+  // console.log(data);
   return data;
 }
 
@@ -34,8 +34,10 @@ async function setMovieID() {
   let movies = data;
   movieID = [];
   delMovieId = [];
-  for(let key in movies) {
-    movieID.push(key);
+  for(let key of movies) {
+    // if(key % 2 == 1) {
+    movieID.push(key.id); 
+  // }  
   }
   delMovieId = movieID;
 }
@@ -45,38 +47,14 @@ async function displayMovies(clear = 0) {
   let data = await getMovies();
   let movies = data;
   if (!clear) {
-  for (let key of movieID) {
-      let MOVIE = movies[key]['data']
+  for (let key of movies) {
       let mov = document.createElement('div');
-      mov.id = `mov${key}`;
+      mov.id = `mov${key.id}`;
       mov.className = "mov";
-      let poster = `<img src=${config.image_base_url + MOVIE.poster_path} class="poster" id=mov${key}>`
+      let poster = `<img src=${config.image_base_url + key.posterPath} class="poster" id=mov${key}>`
       mov.innerHTML = poster;
       mov.addEventListener('click', () => {
-      let realKey;
-        if(key == 0) {
-            switch (current_page){
-              case 1:
-                realKey = 0;
-                break;
-              case 2:
-                realKey = 19;
-                break;
-              case 3:
-                realKey = 39;
-                break;
-              case 4:
-                realKey = 59;
-                break;
-              case 5:
-                realKey = 79;
-                break;
-            }
-        } else {
-          realKey = (key * current_page) + (current_page - 1);
-        }
-
-        review(realKey, MOVIE, MOD);
+      review(key, MOD);
       })
       try {
         movie.appendChild(mov);
@@ -97,7 +75,8 @@ function changeMovieMod () {
   mode.addEventListener('change', () => {
     let search = document.getElementById('searchTitle');
     search.value = "";
-    let data = getMoviesModeLocal(current_page);
+    // let data = getMoviesModeLocal(current_page);
+    let data = getMoviesModeBackend();
     MOD = mode.value;
     document.getElementById('moviesMode').innerHTML = MOD.replace(/_/g, ' ');
     movieMod = data[MOD];
@@ -121,11 +100,13 @@ async function searchFilter() {
   delMovieId =  movieID;
   movieID =  [];
     for (let key in movies) {
-      let MOVIE = movies[key]['data']
+      let MOVIE = movies[key]
       let title = MOVIE.title;
       title = title.toLowerCase();
       if(title.includes(search.value.toLowerCase())) {
+        // if(key % 2 == 1) {
         movieID.push(key);
+      // }
       }
     }
     displayMovies(1);
@@ -146,8 +127,8 @@ function addPagination() {
     movieMod = pageSetting(prev.value)[MOD];
     document.getElementById(`page${current_page}`).className = "active";
     unsetColor(current_page);;
-    setMovieID();
     displayMovies(1);
+    setMovieID();
     displayMovies();
 
     // deletePagination();
@@ -164,8 +145,8 @@ function addPagination() {
     movieMod = pageSetting(next.value)[MOD];
     document.getElementById(`page${current_page}`).className = "active";
     unsetColor(current_page);
-    setMovieID();
     displayMovies(1);
+    setMovieID();
     displayMovies();
 
     // deletePagination();
@@ -187,9 +168,9 @@ function addPagination() {
 
     page.addEventListener('click', () => {
       movieMod = pageSetting(page.innerHTML)[MOD];
-
-      setMovieID();
+      console.log(MOD);
       displayMovies(1);
+      setMovieID();
       displayMovies();
       // deletePagination();
       // addPagination();

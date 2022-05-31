@@ -14,10 +14,10 @@ let MODE;
 let KEY;
 
 
-export default function review(key, data, mode) {
+export default function review(data, mode) {
     MODE = mode;
     newData = data;
-    KEY = key;
+    KEY = data.id;
     modal.style.display = "block";
     
     span.onclick = function() {
@@ -28,14 +28,14 @@ export default function review(key, data, mode) {
       modalTitle.innerHTML = data.title;
       let modalReview = document.getElementById('review');
       modalReview.innerHTML = data.overview;
-      btn.id = `btn${key}`;
+      btn.id = `btn${KEY}`;
       btn.addEventListener('click', () => {
           btn.style = "display: none";
           save.style = 'display: block';
           paragraph.style = "display: none"
           textBox.style = "display: block";
           textBox.value =  paragraph.innerHTML;
-          save.id = `save${key}`
+          save.id = `save${KEY}`
       })
 }
 
@@ -55,6 +55,7 @@ function delete_movie() {
     deleteBtn.addEventListener('click', () => {
         delete_data(KEY, MODE);
         closeModal();
+        location.reload();
     })
 }
 

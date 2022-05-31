@@ -1,4 +1,4 @@
-import { getMoviesModeLocal } from "./movies.js";
+import { getMoviesModeBackend } from "./movies.js";
 
 export let current_page = 1;
 export let max_page = 9;
@@ -15,7 +15,7 @@ export default function pageSetting(val) {
     } else {
         current_page = parseInt(val);
     }
-    return getMoviesModeLocal(current_page);
+    return getMoviesModeBackend(current_page);
 }
 
 

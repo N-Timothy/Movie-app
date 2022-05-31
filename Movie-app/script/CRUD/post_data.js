@@ -1,21 +1,18 @@
-export async function post_data(mode, newData) {
-    const oldData = await fetch(`https://nathanael-website-json-server.herokuapp.com/${mode}`)
-    const result = await oldData.json();
-    
-    const ids = result.map(object => {
-        return object.id;
-    })
-    let nextID = Math.max(...ids) + 1;
+import {config} from '../config.js'
 
-        const res = await fetch(`https://nathanael-website-json-server.herokuapp.com/${mode}`, {
+let LOCAL = config.localServer;
+
+export async function post_data(mode, newData) {
+        const res = await fetch(`${LOCAL}${mode}`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: nextID,
-            data: newData
+            "title": newData.title,
+            "overview": newData.overview,
+            "posterPath": newData.posterPath
         })
     });
     const data = await res.json();
