@@ -1,9 +1,10 @@
 import {config} from '../config.js'
 
 let LOCAL = config.localServer;
+let HEROKU = config.herkouServer;
 
 export async function post_data(mode, newData) {
-        const res = await fetch(`${LOCAL}${mode}`, {
+        const res = await fetch(`${HEROKU}${mode}`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

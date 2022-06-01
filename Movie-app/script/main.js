@@ -1,7 +1,7 @@
 import '../css/style.css';
 import { config } from './config.js';
 import { getMoviesModeBackend } from './movies';
-import pageSetting, { unsetColor } from './pagination.js';
+import pageSetting, { getCurrentPage, unsetColor, MOVIEMOD, setCookieMod } from './pagination.js';
 import {current_page } from './pagination.js';
 import add_movie from './add';
 import { add_movie_modal } from './add';
@@ -10,14 +10,17 @@ import { generate_data } from './CRUD/generate_data';
 
 import review from './review';
 
+getCurrentPage();
+
 const movie = document.getElementById("movies");
 
-let movieMod = getMoviesModeBackend(1).now_showing;
+let movieMod = getMoviesModeBackend(current_page).now_showing;
 let movieID = [];
 let delMovieId = [];
-let MOD = 'now_showing';
+let MOD = MOVIEMOD || 'now_showing';
 
 async function getMovies() {
+  movieMod = getMoviesModeBackend(current_page)[MOD];
   let data = [];
   try {
     let res = await fetch(movieMod, {
@@ -25,7 +28,6 @@ async function getMovies() {
     });
     data = await res.json();
   } catch (e) {}
-  // console.log(data);
   return data;
 }
 
@@ -81,6 +83,7 @@ function changeMovieMod () {
     document.getElementById('moviesMode').innerHTML = MOD.replace(/_/g, ' ');
     movieMod = data[MOD];
     delMovieId =  movieID;
+    setCookieMod(MOD);
     displayMovies(1);
     setMovieID();
     displayMovies();

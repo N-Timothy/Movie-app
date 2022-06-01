@@ -1,4 +1,5 @@
 import { post_data } from "./CRUD/post_data";
+import { current_page, MOVIEMOD } from "./pagination";
 
 var modal = document.getElementById("addmyModal");
 var span = document.getElementsByClassName("addClose")[0];
@@ -15,7 +16,10 @@ export function add_movie_modal() {
     });
 }
 
-export default function add_modal() {
+export default function add_movie() {
+    document.getElementById(`page${current_page}`).className = "active";
+    document.getElementById('movieDropDown').value = MOVIEMOD;
+    document.getElementById('moviesMode').innerHTML = MOVIEMOD.replace(/_/g, ' ');
     let addForm = document.getElementById('addForm');
     addForm.addEventListener('submit', () => {
         mode = document.getElementById('addMovieDropDown').value;

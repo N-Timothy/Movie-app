@@ -18,6 +18,6 @@ app.get("/",  (req, res) => {
 
 require("./app/routes/movie.routes.js")(app);
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+app.listen(process.env.PORT || port , () => {
+    console.log(`Example app listening at ${process.env.PORT} or ${port}`)
 });

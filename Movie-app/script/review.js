@@ -55,7 +55,6 @@ function delete_movie() {
     deleteBtn.addEventListener('click', () => {
         delete_data(KEY, MODE);
         closeModal();
-        location.reload();
     })
 }
 

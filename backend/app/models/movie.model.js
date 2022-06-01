@@ -7,7 +7,7 @@ const Movie = function(movie) {
 };
 
 Movie.create = (newMovie, mode = "now_showing", result) => {
-    sql.query(`INSERT IGNORE INTO ${mode} SET ? `, newMovie, (e, res) => {
+    sql.query(`INSERT INTO ${mode} SET ? `, newMovie, (e, res) => {
         if(e) {
             console.log("error: ", e) // if error
             result(e, null);

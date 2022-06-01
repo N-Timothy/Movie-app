@@ -2,6 +2,7 @@ import getMovieModes from '../movies.js';
 import {config} from '../config.js'
 
 let LOCAL = config.localServer;
+let HEROKU = config.herkouServer;
 
 let pages = [1,2,3,4,5];
 
@@ -12,7 +13,7 @@ export async function generate_data() {
             const resData = await result.json()
             const allMovies = resData.results;
             for(let movie of allMovies) {     
-                const res = await fetch(`${LOCAL}${key}`, {
+                const res = await fetch(`${HEROKU}${key}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

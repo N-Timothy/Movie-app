@@ -3,5 +3,5 @@ export const config = {
     api_based_url: 'https://api.themoviedb.org/3/movie/' ,
     image_base_url: 'https://image.tmdb.org/t/p/w1280',
     localServer: 'http://localhost:3000/api/',
-    herkouServer: 'https://nathanael-website-json-server.herokuapp.com/'
+    herkouServer: 'https://moviebackendnathanaeltimothy.herokuapp.com/api/'
 }

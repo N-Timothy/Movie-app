@@ -25,9 +25,13 @@ export function getMoviesModeLocal(page) {
 
 export function getMoviesModeBackend(page) {
     return {
-        popular :  `${LOCAL}popular?page=${page}&limit=20`,
-        upcoming : `${LOCAL}upcoming?page=${page}&limit=20`,
-        now_showing : `${LOCAL}now_showing?page=${page}&limit=20`,
-        top_rated : `${LOCAL}top_rated?page=${page}&limit=20`
+        // popular :  `${LOCAL}popular?page=${page}&limit=20`,
+        // upcoming : `${LOCAL}upcoming?page=${page}&limit=20`,
+        // now_showing : `${LOCAL}now_showing?page=${page}&limit=20`,
+        // top_rated : `${LOCAL}top_rated?page=${page}&limit=20`
+        popular :  `${HEROKU}popular?page=${page}&limit=20`,
+        upcoming : `${HEROKU}upcoming?page=${page}&limit=20`,
+        now_showing : `${HEROKU}now_showing?page=${page}&limit=20`,
+        top_rated : `${HEROKU}top_rated?page=${page}&limit=20`
         }
     }
